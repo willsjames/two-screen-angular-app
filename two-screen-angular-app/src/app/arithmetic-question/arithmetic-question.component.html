@@ -1,8 +1,8 @@
+<!-- Display the question -->
 <p>Question: {{ question }}</p>
+<!-- Display the answer -->
 <p>Answer: {{ answer }}</p>
-<!-- <button mat-stroke-button color="primary" (click)="generateRandomQuestion()">Generate</button> -->
-<!-- call onSubmit method on submitting the form -->
-<!-- ngSubmit listens for the submit event which is fired when suer clicks submit button or hits enter -->
+
 <form (ngSubmit)="onSubmit(userAnswer, answerForm)" #answerForm="ngForm">
   <mat-form-field>
     <input matInput type="number"
@@ -17,3 +17,6 @@
           [disabled]="!answerForm.form.valid">Submit
   </button>
 </form>
+
+<!-- Display the button only when the answer is correct and the form is submitted -->
+<button *ngIf="getIsCorrect()" mat-flat-button color="primary" routerLink="/cat-image">View Cat Image</button>

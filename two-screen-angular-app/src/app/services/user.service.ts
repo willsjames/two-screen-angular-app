@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UserService {
-  /**
-   * Subject used to emit the correctness status of the user.
-   */
-  private _isCorrect = new Subject<boolean>();
+  // Private subject to store the value of whether the answer is correct or not
+  private _isCorrect = new BehaviorSubject<boolean>(false);
 
-  /**
-   * Observable that emits the correctness status of the user.
-   */
+  // Observable that emits the value of whether the answer is correct or not
   isCorrect$ = this._isCorrect.asObservable();
 
-  /**
-   * Sets the correctness status of the user.
-   * @param value - The correctness status to set.
-   */
+  // Method to set the value of whether the answer is correct or not
+  // It takes a boolean value as a parameter and emits it through the _isCorrect subject
   setIsCorrect(value: boolean) {
     this._isCorrect.next(value);
   }
 
-  constructor() {
+  getIsCorrect(): boolean {
+    return this._isCorrect.value;
   }
+
+  constructor() {}
 }

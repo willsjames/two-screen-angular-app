@@ -5,11 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
-
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-arithmetic-question',
   standalone: true,
-  imports: [MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule],
+  imports: [NgIf, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule],
   templateUrl: './arithmetic-question.component.html',
   styleUrl: './arithmetic-question.component.css'
 })
@@ -25,6 +25,7 @@ export class ArithmeticQuestionComponent implements OnInit{
   answer: number = 0;
   question: string = ``;
   userAnswer: number = NaN;
+  message: string = ``;
 
   getRandomInt() {
     return Math.floor(Math.random() * 10);
@@ -42,8 +43,16 @@ export class ArithmeticQuestionComponent implements OnInit{
     this.question = question;
   }
 
+  isAnswerCorrect(userAnswer: number): boolean {
+    return userAnswer === this.answer;
+  }
+
+  getIsCorrect(): boolean {
+    return this.userService.getIsCorrect();
+  }
+
   onSubmit(userAnswer: number, answerForm: any) {
-    if (userAnswer === this.answer) {
+    if (this.isAnswerCorrect(userAnswer)) {
       this.userService.setIsCorrect(true);
     } else {
       this.userService.setIsCorrect(false);
@@ -51,6 +60,7 @@ export class ArithmeticQuestionComponent implements OnInit{
     this.generateRandomQuestion();
     answerForm.resetForm();
   }
+
 
 }
 

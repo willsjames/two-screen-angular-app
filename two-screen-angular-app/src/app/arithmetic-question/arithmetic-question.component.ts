@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-arithmetic-question',
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ArithmeticQuestionComponent implements OnInit{
 
-  constructor() { }
+  // Inject the UserService in the constructor to access the isCorrect property
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.generateRandomQuestion();
@@ -42,22 +44,13 @@ export class ArithmeticQuestionComponent implements OnInit{
 
   onSubmit(userAnswer: number, answerForm: any) {
     if (userAnswer === this.answer) {
-      alert('Correct!');
+      this.userService.setIsCorrect(true);
     } else {
-      alert('Incorrect!');
+      this.userService.setIsCorrect(false);
     }
     this.generateRandomQuestion();
     answerForm.resetForm();
   }
 
 }
-      // Display "Correct!" message in the cat-image component
-      // You can achieve this by creating a shared service
-      // 1. Create a new service file, e.g., shared.service.ts
-      // 2. In the shared service, create a boolean property, e.g., isCorrect
-      // 3. Inject the shared service in both arithmetic-question and cat-image components
-      // 4. Set the value of isCorrect in the arithmetic-question component
-      // 5. Access the value of isCorrect in the cat-image component
-      // 6. Bind the value of isCorrect to the cat-image component in the template
-      // 7. Update the cat-image component to display the "Correct!" message based on the value of isCorrect
-      // No routing is needed for this scenario
+

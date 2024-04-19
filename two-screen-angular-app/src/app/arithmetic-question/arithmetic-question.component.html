@@ -1,0 +1,19 @@
+<p>Question: {{ question }}</p>
+<p>Answer: {{ answer }}</p>
+<!-- <button mat-stroke-button color="primary" (click)="generateRandomQuestion()">Generate</button> -->
+<!-- call onSubmit method on submitting the form -->
+<!-- ngSubmit listens for the submit event which is fired when suer clicks submit button or hits enter -->
+<form (ngSubmit)="onSubmit(userAnswer, answerForm)" #answerForm="ngForm">
+  <mat-form-field>
+    <input matInput type="number"
+           placeholder="Answer"
+           [(ngModel)]="userAnswer"
+           name="userAnswer"
+           required>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary"
+          type="submit"
+          [disabled]="!answerForm.form.valid">Submit
+  </button>
+</form>

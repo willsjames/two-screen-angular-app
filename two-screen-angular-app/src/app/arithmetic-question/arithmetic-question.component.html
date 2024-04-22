@@ -14,10 +14,15 @@
 
   <button mat-flat-button color="primary"
           type="submit"
-          [disabled]="!answerForm.form.valid">Submit
+          [disabled]="!userAnswer"
+  >Submit
   </button>
 </form>
 
 <!-- Display the button only when the answer is correct and the form is submitted -->
-<p *ngIf="getIsCorrect()">{{ message }}</p>
-<button *ngIf="getIsCorrect()" mat-flat-button color="primary" routerLink="/cat-image">View Cat Image</button>
+<p *ngIf="getIsCorrect()">{{ messageWhenCorrect }}</p>
+<p *ngIf="!getIsCorrect() && isSubmitted">{{ messageWhenIncorrect }}</p>
+<button *ngIf="getIsCorrect()"
+        mat-flat-button color="primary"
+        routerLink="/cat-image"
+>Claim Reward</button>

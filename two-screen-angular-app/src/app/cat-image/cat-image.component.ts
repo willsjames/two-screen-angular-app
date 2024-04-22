@@ -3,49 +3,56 @@ import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-cat-image',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, RouterModule],
   templateUrl: './cat-image.component.html',
   styleUrl: './cat-image.component.css'
 })
 
-export class CatImageComponent implements OnInit, OnDestroy {
-  // Declare and initialize a boolean variable to track whether the answer is correct or not
+export class CatImageComponent implements OnInit {
+
   isCorrect: boolean = false;
-  // Declare a private subscription variable of type Subscription to hold the subscription to the isCorrect$ observable
+  answer: number = 0;
+  userAnswer: number = NaN;
   private subscription: Subscription = new Subscription();
 
-
+  // Fetch from cat API
   api_key: string = `live_oV30uAAhIprX4Lkg1LSUl5DWEMm4F7J1YKoxRasDEXZmPtrhVzliPFQIqJsFd5Iu`;
   base_url: string = `https://api.thecatapi.com/v1/images/search`;
   image_url = `${this.base_url}?api_key=${this.api_key}`;
 
   fetchCatImage() {
-
     this.httpClient.get<any>(this.image_url, { responseType: 'json'}).subscribe(response => {
       this.image_url = response[0].url;
     });
   }
 
-  // Inject the UserService and HttpClient dependencies into the constructor
   constructor(private userService: UserService, private httpClient: HttpClient) { }
 
-  // Implement the ngOnInit lifecycle hook
   ngOnInit(): void {
-    // Subscribe to the isCorrect$ observable from the UserService
-    // Whenever the value of isCorrect$ changes, update the value of isCorrect variable
+    // Subscribe to observables$ from the UserService
+    // Whenever the value of observables$ changes, update the value of fields
     this.subscription = this.userService.isCorrect$.subscribe(value => {
       this.isCorrect = value;
     });
-    // fetch random cat image from api
+
+    this.subscription = this.userService.answer$.subscribe(value => {
+      this.answer = value;
+    });
+
+    this.subscription = this.userService.userAnswer$.subscribe(value => {
+      this.userAnswer = value;
+    });
+
+    // Fetch a cat image when the component is initialized
     this.fetchCatImage();
   }
 
-  // Implement the ngOnDestroy lifecycle hook
+  // Unsubscribe from the subscription to avoid memory leaks
   ngOnDestroy(): void {
-    // Unsubscribe from the subscription to avoid memory leaks
     this.subscription.unsubscribe();
   }
 

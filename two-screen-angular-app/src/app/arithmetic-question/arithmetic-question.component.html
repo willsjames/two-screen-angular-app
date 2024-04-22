@@ -1,7 +1,7 @@
 <!-- Display the question -->
 <p>Question: {{ question }}</p>
 <!-- Display the answer -->
-<p>Answer: {{ answer }}</p>
+<!-- <p>Answer: {{ getAnswer() }}</p> -->
 
 <form (ngSubmit)="onSubmit(userAnswer, answerForm)" #answerForm="ngForm">
   <mat-form-field>
@@ -19,4 +19,5 @@
 </form>
 
 <!-- Display the button only when the answer is correct and the form is submitted -->
+<p *ngIf="getIsCorrect()">{{ message }}</p>
 <button *ngIf="getIsCorrect()" mat-flat-button color="primary" routerLink="/cat-image">View Cat Image</button>

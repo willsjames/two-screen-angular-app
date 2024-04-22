@@ -14,6 +14,10 @@ import { NgIf } from '@angular/common';
   styleUrl: './arithmetic-question.component.css'
 })
 export class ArithmeticQuestionComponent implements OnInit{
+  private answer: number = 0;
+  question: string = ``;
+  userAnswer: number = NaN;
+  message: string = `Well done! You got it right! Click the button to see your reward!`;
 
   // Inject the UserService in the constructor to access the isCorrect property
   constructor(private userService: UserService) { }
@@ -21,11 +25,6 @@ export class ArithmeticQuestionComponent implements OnInit{
   ngOnInit(): void {
     this.generateRandomQuestion();
   }
-
-  answer: number = 0;
-  question: string = ``;
-  userAnswer: number = NaN;
-  message: string = ``;
 
   getRandomInt() {
     return Math.floor(Math.random() * 10);
@@ -47,10 +46,6 @@ export class ArithmeticQuestionComponent implements OnInit{
     return userAnswer === this.answer;
   }
 
-  getIsCorrect(): boolean {
-    return this.userService.getIsCorrect();
-  }
-
   onSubmit(userAnswer: number, answerForm: any) {
     if (this.isAnswerCorrect(userAnswer)) {
       this.userService.setIsCorrect(true);
@@ -61,6 +56,12 @@ export class ArithmeticQuestionComponent implements OnInit{
     answerForm.resetForm();
   }
 
+  getIsCorrect(): boolean {
+    return this.userService.getIsCorrect();
+  }
 
+  getAnswer(): number {
+    return this.answer;
+  }
 }
 

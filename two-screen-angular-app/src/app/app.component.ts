@@ -11,6 +11,6 @@ import { ArithmeticQuestionComponent } from './arithmetic-question/arithmetic-qu
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'two-screen-angular-app';
+  title: string = 'two-screen-angular-app';
 
 }

@@ -4,16 +4,17 @@ import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-cat-image',
   standalone: true,
-  imports: [HttpClientModule, RouterModule],
+  imports: [HttpClientModule, RouterModule, NgIf],
   templateUrl: './cat-image.component.html',
   styleUrl: './cat-image.component.css'
 })
 
 export class CatImageComponent implements OnInit {
-
+  title: string = `Here's a cat!`;
   isCorrect: boolean = false;
   answer: number = 0;
   userAnswer: number = NaN;
@@ -24,7 +25,9 @@ export class CatImageComponent implements OnInit {
   base_url: string = `https://api.thecatapi.com/v1/images/search`;
   image_url = `${this.base_url}?api_key=${this.api_key}`;
 
+
   fetchCatImage() {
+
     this.httpClient.get<any>(this.image_url, { responseType: 'json'}).subscribe(response => {
       this.image_url = response[0].url;
     });

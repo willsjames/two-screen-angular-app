@@ -15,8 +15,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './arithmetic-question.component.css'
 })
 export class ArithmeticQuestionComponent implements OnInit{
-
-  private answer: number = 0;
+  title: string = `Test Your Addition!`;
+  numberIncorrectAnswers: number = 0;
+  answer: number = 0;
   question: string = ``;
   isSubmitted: boolean = false;
   userAnswer: number = NaN;
@@ -32,6 +33,7 @@ export class ArithmeticQuestionComponent implements OnInit{
     this.isSubmitted = false;
     this.userAnswer = NaN;
     this.userService.setIsCorrect(false);
+    this.numberIncorrectAnswers = 0;
   }
 
   getRandomInt() {
@@ -62,6 +64,7 @@ export class ArithmeticQuestionComponent implements OnInit{
       this.userService.setIsCorrect(false);
       this.generateRandomQuestion();
       answerForm.resetForm();
+      this.numberIncorrectAnswers++;
     }
     this.isSubmitted = true;
 
@@ -71,8 +74,5 @@ export class ArithmeticQuestionComponent implements OnInit{
     return this.userService.getIsCorrect();
   }
 
-  getAnswer(): number {
-    return this.answer;
-  }
 }
 

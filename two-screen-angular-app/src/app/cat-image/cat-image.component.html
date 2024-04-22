@@ -1,7 +1,15 @@
 <!-- Display isCorrect Boolean value -->
 <!-- <p>{{ isCorrect }}</p> -->
-<p>Your answer: {{ userAnswer }}</p>
-<p>Correct answer: {{ answer }}</p>
-<p>Well done! Here is your reward</p>
-<img [src]="image_url" alt="Cat Image">
-<a routerLink="/">Try another Question</a>
+<h1>{{ title }}</h1>
+<section class="rewards__message">
+  <p>Your answer: {{ userAnswer }}</p>
+  <p>Correct answer: {{ answer }}</p>
+  <p>Well done! Here is your reward:</p>
+
+</section>
+
+<!-- <p *ngIf="isLoading">Image loading</p> -->
+<figure class="rewards__image">
+  <img [src]="image_url" alt="Cat Image">
+  <a routerLink="/">Try another Question</a>
+</figure>

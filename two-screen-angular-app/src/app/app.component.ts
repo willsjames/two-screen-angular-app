@@ -8,7 +8,7 @@ import { ArithmeticQuestionComponent } from './arithmetic-question/arithmetic-qu
   standalone: true,
   imports: [RouterOutlet, CatImageComponent, ArithmeticQuestionComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title: string = 'Test Your Addition';

@@ -19,6 +19,7 @@ app-cat-image, app-arithmetic-question, .question, .answer__form, .answer__respo
 }
 
 .rewards__image img {
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   padding: 3rem 0;
 }

@@ -1,0 +1,29 @@
+[33mcommit b3f3bb04b5af99d040f41b3416b5b7bd5e40d8a9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev-branch[m[33m, [m[1;31morigin/dev-branch[m[33m)[m
+Author: James Wills <james.wills@diegesis.co.uk>
+Date:   Mon Apr 22 10:46:23 2024 +0100
+
+    implement GET request with api
+
+[33mcommit 8173ef1230fb7de92c80ac7297d3dfa91eab60bd[m
+Author: James Wills <james.wills@diegesis.co.uk>
+Date:   Fri Apr 19 16:27:56 2024 +0100
+
+    reward button appears when answer is correct. ready for routing
+
+[33mcommit 05d33df377e50a10f83baa9c8fb0c9701a58800a[m
+Author: James Wills <james.wills@diegesis.co.uk>
+Date:   Fri Apr 19 15:16:20 2024 +0100
+
+    service component and observable-subscriber implemented to share data between components
+
+[33mcommit b2d0335f0beb93ab3eb1920f3a12ca3b2735b671[m
+Author: James Wills <james.wills@diegesis.co.uk>
+Date:   Fri Apr 19 12:51:39 2024 +0100
+
+    question generation functionality implemented
+
+[33mcommit 7c1b9cb4abd71e2ec7d14ba10916b295a94bfc1c[m
+Author: James Wills <james.wills@diegesis.co.uk>
+Date:   Fri Apr 19 09:25:06 2024 +0100
+
+    initial commit

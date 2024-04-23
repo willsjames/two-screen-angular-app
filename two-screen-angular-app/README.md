@@ -2,26 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This is a two-screen Angular app that demonstrates a simple navigation flow between two screens, including routing, services, angular material components and API.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Screen 1: This is the initial screen of the app. It displays a simple arithmetic question inviting the user to input an answer. If the answer is wrong, the form resets the form, regenerates the question, displays a message and increments a wrongAnswers counter by 1. If the answer is correct, the question remains visible, the form is disabled and a message and button appears inviting the user to claim a reward. This button leads to the second component. Clicking the button sets a boolean flag which toggles the visibility of the messages.
+- Screen 2: This screen is displayed when the user clicks the button on the first screen. It displays the user's answer and the correct answer and fetches an image of a cute cat using an API. There is a routerLink to provide a way to go back to the first screen.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository: `git clone https://github.com/your-username/TwoScreenAngularApp.git`
+2. Navigate to the project directory: `cd TwoScreenAngularApp`
+3. Install the dependencies: `npm install`
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Start the development server: `ng serve`
+2. Open your browser and navigate to `http://localhost:4200`
 
-## Running end-to-end tests
+## Contributing
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
